@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 import { CreateTurnoDto } from './dto/create-turno.dto';
 import { UpdateTurnoDto } from './dto/update-turno.dto';
 
 @Injectable()
-export class TurnoService {
+export class TurnoService extends PrismaClient {
   create(createTurnoDto: CreateTurnoDto) {
-    return 'This action adds a new turno';
+    return this.turno.create({ data: createTurnoDto });
   }
 
-  findAll() {
-    return `This action returns all turno`;
+  async findAll() {
+    return await this.turno.findMany();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} turno`;
+  async findOne(id: string) {
+    return await this.turno.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: string, updateTurnoDto: UpdateTurnoDto) {
-    return `This action updates a #${id} turno`;
+  async update(id: string, updateTurnoDto: UpdateTurnoDto) {
+    return await this.turno.update({
+      where: { id },
+      data: updateTurnoDto,
+    });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} turno`;
+  async remove(id: string) {
+    return await this.turno.delete({ where: { id } });
   }
 }

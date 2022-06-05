@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 import { CreateCargoDto } from './dto/create-cargo.dto';
 import { UpdateCargoDto } from './dto/update-cargo.dto';
 
 @Injectable()
-export class CargoService {
+export class CargoService extends PrismaClient {
   create(createCargoDto: CreateCargoDto) {
-    return 'This action adds a new cargo';
+    return this.cargo.create({ data: createCargoDto });
   }
 
-  findAll() {
-    return `This action returns all cargo`;
+  async findAll() {
+    return await this.cargo.findMany();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} cargo`;
+  async findOne(id: string) {
+    return await this.cargo.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: string, updateCargoDto: UpdateCargoDto) {
-    return `This action updates a #${id} cargo`;
+  async update(id: string, updateCargoDto: UpdateCargoDto) {
+    return await this.cargo.update({
+      where: { id },
+      data: updateCargoDto,
+    });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} cargo`;
+  async remove(id: string) {
+    return await this.cargo.delete({ where: { id } });
   }
 }

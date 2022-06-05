@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTarefaDto } from './dto/create-tarefa.dto';
 import { UpdateTarefaDto } from './dto/update-tarefa.dto';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class TarefaService {
+export class TarefaService extends PrismaClient {
   create(createTarefaDto: CreateTarefaDto) {
-    return 'This action adds a new tarefa';
+    return this.tarefa.create({ data: createTarefaDto });
   }
 
-  findAll() {
-    return `This action returns all tarefa`;
+  async findAll() {
+    return await this.tarefa.findMany();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} tarefa`;
+  async findOne(id: string) {
+    return await this.tarefa.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: string, updateTarefaDto: UpdateTarefaDto) {
-    return `This action updates a #${id} tarefa`;
+  async update(id: string, updateTarefaDto: UpdateTarefaDto) {
+    return await this.tarefa.update({
+      where: { id },
+      data: updateTarefaDto,
+    });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} tarefa`;
+  async remove(id: string) {
+    return await this.tarefa.delete({ where: { id } });
   }
 }
