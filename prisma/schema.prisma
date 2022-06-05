@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs https//pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Loja {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  nome          String?
+  endereco      String?
+  colaboradores Colaborador[]
+  @@map("Lojas")
+}
+
+model Tarefa {
+
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  descricao String?
+  passos String[]
+
+  grupo String?
+  recorrencia Int?
+  prioridade Int?
+}
+
+model Turno {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String?
+  entrada String?
+  saida String?
+}
+
+
+model Cargo {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  diasNaFuncao    Int?
+  planoDeCarreira Int?
+  nome            String?
+
+  salarioFixo      Int?
+  descricaoSalario String?
+
+  temComissaoSobreVendas  Boolean?
+  temComissaoUnitaria     Boolean?
+  temComissaoVendasLoja   Boolean?
+  temMetasLoja            Boolean?
+  temMetasIndividuais     Boolean?
+  temAleloPremiacao       Boolean?
+  temBradescoDental       Boolean?
+  temSeguroDeVida         Boolean?
+  temPlanoDeSaude         Boolean?
+  temBonusDomingo         Boolean?
+  temGratificacao         Boolean?
+  temGarantiaMinima       Boolean?
+  temQuebraDeCaixaHolerit Boolean?
+  temQuebraDeCaixaAlelo   Boolean?
+  temPericulosidade       Boolean?
+
+  descontinuado Boolean?
+  cargoAtivo    Boolean?
+
+  valorAlelo        Int?
+  valorGratificacao Int?
+
+  comissao    Int?
+  beneficios  String[]
+  Colaborador Colaborador[]
+}
+
+model Colaborador {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  cpf  String?
+  nome String?
+
+  matricula        Int?
+  sexo             String?
+  pai              String?
+  mae              String?
+  nacionalidadePai String?
+  nacionalidadeMae String?
+
+  dataNascimento   String?
+  idade            Int?
+  nacionalidade    String?
+  localNascimento  String?
+  estado           String?
+  estadoCivil      String?
+  deficienteFisico Boolean?
+  tipoDeficiencia  String?
+  racaCor          String?
+  telefone         String?
+  celular          String?
+  telefoneRec      String?
+  email            String?
+  admissao         String?
+  selario          Int?
+
+  setor String?
+
+  horarioTrabalho String?
+
+  venc1Experiencia String?
+  venc2Experiencia String?
+  endereco         String?
+
+  cargo Cargo? @relation(fields: [cargoId], references: [id])
+
+  Loja    Loja?   @relation(fields: [lojaId], references: [id])
+  lojaId  String? @db.ObjectId
+  cargoId String?  @db.ObjectId
+}
