@@ -8,21 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CargoService = void 0;
 const common_1 = require("@nestjs/common");
-let CargoService = class CargoService {
+const client_1 = require("@prisma/client");
+let CargoService = class CargoService extends client_1.PrismaClient {
     create(createCargoDto) {
-        return 'This action adds a new cargo';
+        return this.cargo.create({ data: createCargoDto });
     }
-    findAll() {
-        return `This action returns all cargo`;
+    async findAll() {
+        return await this.cargo.findMany();
     }
-    findOne(id) {
-        return `This action returns a #${id} cargo`;
+    async findOne(id) {
+        return await this.cargo.findUnique({
+            where: { id },
+        });
     }
-    update(id, updateCargoDto) {
-        return `This action updates a #${id} cargo`;
+    async update(id, updateCargoDto) {
+        return await this.cargo.update({
+            where: { id },
+            data: updateCargoDto,
+        });
     }
-    remove(id) {
-        return `This action removes a #${id} cargo`;
+    async remove(id) {
+        return await this.cargo.delete({ where: { id } });
     }
 };
 CargoService = __decorate([

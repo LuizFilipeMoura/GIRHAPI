@@ -24,23 +24,24 @@ model Tarefa {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   descricao String?
-  passos String[]
+  passos    String[]
 
-  grupo String?
+  grupo       String?
   recorrencia Int?
-  prioridade Int?
+  prioridade  Int?
+  Cargo       Cargo?  @relation(fields: [cargoId], references: [id])
+  cargoId     String? @db.ObjectId
 }
 
 model Turno {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  nome String?
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome    String?
   entrada String?
-  saida String?
+  saida   String?
 }
 
-
 model Cargo {
-  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
   diasNaFuncao    Int?
   planoDeCarreira Int?
   nome            String?
@@ -70,9 +71,10 @@ model Cargo {
   valorAlelo        Int?
   valorGratificacao Int?
 
-  comissao    Int?
-  beneficios  String[]
-  Colaborador Colaborador[]
+  comissao      Int?
+  beneficios    String[]
+  tarefas       Tarefa[]
+  colaboradores Colaborador[]
 }
 
 model Colaborador {
@@ -116,5 +118,5 @@ model Colaborador {
 
   Loja    Loja?   @relation(fields: [lojaId], references: [id])
   lojaId  String? @db.ObjectId
-  cargoId String?  @db.ObjectId
+  cargoId String? @db.ObjectId
 }

@@ -4,9 +4,9 @@ import { UpdateColaboradorDto } from './dto/update-colaborador.dto';
 export declare class ColaboradorController {
     private readonly colaboradorService;
     constructor(colaboradorService: ColaboradorService);
-    create(createColaboradorDto: CreateColaboradorDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateColaboradorDto: UpdateColaboradorDto): string;
-    remove(id: string): string;
+    create(createColaboradorDto: CreateColaboradorDto): import(".prisma/client").Prisma.Prisma__ColaboradorClient<import(".prisma/client").Colaborador>;
+    findAll(): Promise<import(".prisma/client").Colaborador[]>;
+    findOne(id: string): Promise<import(".prisma/client").Colaborador>;
+    update(id: string, updateColaboradorDto: UpdateColaboradorDto): Promise<import(".prisma/client").Colaborador>;
+    remove(id: string): Promise<import(".prisma/client").Colaborador>;
 }

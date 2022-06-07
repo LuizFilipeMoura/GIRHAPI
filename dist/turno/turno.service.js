@@ -8,21 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TurnoService = void 0;
 const common_1 = require("@nestjs/common");
-let TurnoService = class TurnoService {
+const client_1 = require("@prisma/client");
+let TurnoService = class TurnoService extends client_1.PrismaClient {
     create(createTurnoDto) {
-        return 'This action adds a new turno';
+        return this.turno.create({ data: createTurnoDto });
     }
-    findAll() {
-        return `This action returns all turno`;
+    async findAll() {
+        return await this.turno.findMany();
     }
-    findOne(id) {
-        return `This action returns a #${id} turno`;
+    async findOne(id) {
+        return await this.turno.findUnique({
+            where: { id },
+        });
     }
-    update(id, updateTurnoDto) {
-        return `This action updates a #${id} turno`;
+    async update(id, updateTurnoDto) {
+        return await this.turno.update({
+            where: { id },
+            data: updateTurnoDto,
+        });
     }
-    remove(id) {
-        return `This action removes a #${id} turno`;
+    async remove(id) {
+        return await this.turno.delete({ where: { id } });
     }
 };
 TurnoService = __decorate([

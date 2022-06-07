@@ -4,9 +4,9 @@ import { UpdateTarefaDto } from './dto/update-tarefa.dto';
 export declare class TarefaController {
     private readonly tarefaService;
     constructor(tarefaService: TarefaService);
-    create(createTarefaDto: CreateTarefaDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateTarefaDto: UpdateTarefaDto): string;
-    remove(id: string): string;
+    create(createTarefaDto: CreateTarefaDto): import(".prisma/client").Prisma.Prisma__TarefaClient<import(".prisma/client").Tarefa>;
+    findAll(): Promise<import(".prisma/client").Tarefa[]>;
+    findOne(id: string): Promise<import(".prisma/client").Tarefa>;
+    update(id: string, updateTarefaDto: UpdateTarefaDto): Promise<import(".prisma/client").Tarefa>;
+    remove(id: string): Promise<import(".prisma/client").Tarefa>;
 }

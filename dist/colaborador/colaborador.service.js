@@ -8,21 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ColaboradorService = void 0;
 const common_1 = require("@nestjs/common");
-let ColaboradorService = class ColaboradorService {
+const client_1 = require("@prisma/client");
+let ColaboradorService = class ColaboradorService extends client_1.PrismaClient {
     create(createColaboradorDto) {
-        return 'This action adds a new colaborador';
+        return this.colaborador.create({ data: createColaboradorDto });
     }
-    findAll() {
-        return `This action returns all colaborador`;
+    async findAll() {
+        return await this.colaborador.findMany();
     }
-    findOne(id) {
-        return `This action returns a #${id} colaborador`;
+    async findOne(id) {
+        return await this.colaborador.findUnique({
+            where: { id },
+        });
     }
-    update(id, updateColaboradorDto) {
-        return `This action updates a #${id} colaborador`;
+    async update(id, updateColaboradorDto) {
+        return await this.colaborador.update({
+            where: { id },
+            data: updateColaboradorDto,
+        });
     }
-    remove(id) {
-        return `This action removes a #${id} colaborador`;
+    async remove(id) {
+        return await this.colaborador.delete({ where: { id } });
     }
 };
 ColaboradorService = __decorate([

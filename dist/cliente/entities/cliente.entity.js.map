@@ -1,1 +1,0 @@
-{"version":3,"file":"cliente.entity.js","sourceRoot":"","sources":["../../../src/cliente/entities/cliente.entity.ts"],"names":[],"mappings":";;;AAEA,MAAa,WAAW;CAIvB;AAJD,kCAIC;AACD,MAAa,OAAQ,SAAQ,WAAW;IACtC,YAAY,IAAa,EAAE,IAAa;QACtC,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACnB,CAAC;CAEF;AAPD,0BAOC"}
