@@ -8,7 +8,13 @@ import { TarefaModule } from './tarefa/tarefa.module';
 import { TurnoModule } from './turno/turno.module';
 
 @Module({
-  imports: [LojaModule, ColaboradorModule, CargoModule, TarefaModule, TurnoModule],
+  imports: [
+    LojaModule,
+    ColaboradorModule,
+    CargoModule,
+    TarefaModule,
+    TurnoModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

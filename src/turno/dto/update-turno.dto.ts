@@ -1,4 +1,12 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateTurnoDto } from './create-turno.dto';
 
-export class UpdateTurnoDto extends PartialType(CreateTurnoDto) {}
+
+
+
+
+
+export class UpdateTurnoDto {
+  id?: string;
+nome?: string;
+entrada?: string;
+saida?: string;
+}

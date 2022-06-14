@@ -1,3 +1,12 @@
-import { TurnoBase } from '../entities/turno.entity';
 
-export class CreateTurnoDto extends TurnoBase {}
+
+
+
+
+
+export class CreateTurnoDto {
+  id?: string;
+nome?: string;
+entrada?: string;
+saida?: string;
+}

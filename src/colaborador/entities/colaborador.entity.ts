@@ -1,43 +1,40 @@
-import { Cargo } from '../../cargo/entities/cargo.entity';
 
-export class ColaboradorBase {
-  cpf: string;
-  nome: string;
+import {Cargo} from '../../cargo/entities/cargo.entity'
+import {Loja} from '../../loja/entities/loja.entity'
 
-  matricula: number;
-  sexo: string;
-  pai: string;
-  mae: string;
-  nacionalidadePai: string;
-  nacionalidadeMae: string;
 
-  dataNascimento: string;
-  idade: number;
-  nacionalidade: string;
-  localNascimento: string;
-  estado: string;
-  estadoCivil: string;
-  deficienteFisico: boolean;
-  tipoDeficiencia: string;
-  racaCor: string;
-  telefone: string;
-  celular: string;
-  telefoneRec: string;
-  email: string;
-  admissao: string;
-  selario: number;
-
-  setor: string;
-
-  horarioTrabalho: string;
-
-  venc1Experiencia: string;
-  venc2Experiencia: string;
-  endereco: string;
-}
-
-export class Colaborador extends ColaboradorBase {
-  cargoId: string;
-  cargo: Cargo;
-  id: string;
+export class Colaborador {
+  id: string ;
+cpf: string  | null;
+nome: string  | null;
+matricula: number  | null;
+sexo: string  | null;
+pai: string  | null;
+mae: string  | null;
+nacionalidadePai: string  | null;
+nacionalidadeMae: string  | null;
+dataNascimento: string  | null;
+idade: number  | null;
+nacionalidade: string  | null;
+localNascimento: string  | null;
+estado: string  | null;
+estadoCivil: string  | null;
+deficienteFisico: boolean  | null;
+tipoDeficiencia: string  | null;
+racaCor: string  | null;
+telefone: string  | null;
+celular: string  | null;
+telefoneRec: string  | null;
+email: string  | null;
+admissao: string  | null;
+selario: number  | null;
+setor: string  | null;
+horarioTrabalho: string  | null;
+venc1Experiencia: string  | null;
+venc2Experiencia: string  | null;
+endereco: string  | null;
+cargo?: Cargo  | null;
+Loja?: Loja  | null;
+lojaId: string  | null;
+cargoId: string  | null;
 }

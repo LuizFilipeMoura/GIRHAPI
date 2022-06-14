@@ -5,22 +5,43 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src"
+  outputToNestJsResourceStructure = "true"
+  exportRelationModifierClasses   = "true"
+  reExport                        = "false"
+  createDtoPrefix                 = "Create"
+  updateDtoPrefix                 = "Update"
+  dtoSuffix                       = "Dto"
+  entityPrefix                    = ""
+  entitySuffix                    = ""
+  fileNamingStyle                 = "camel"
+}
+
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Loja {
+  ///@DtoCreateOptional
+  ///@DtoUpdateOptional
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   nome          String?
   endereco      String?
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
   colaboradores Colaborador[]
   @@map("Lojas")
 }
 
 model Tarefa {
-
+  ///@DtoCreateOptional
+  ///@DtoUpdateOptional
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   descricao String?
@@ -29,11 +50,17 @@ model Tarefa {
   grupo       String?
   recorrencia Int?
   prioridade  Int?
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
   Cargo       Cargo?  @relation(fields: [cargoId], references: [id])
   cargoId     String? @db.ObjectId
 }
 
 model Turno {
+  ///@DtoCreateOptional
+  ///@DtoUpdateOptional
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
   nome    String?
   entrada String?
@@ -41,6 +68,8 @@ model Turno {
 }
 
 model Cargo {
+  ///@DtoCreateOptional
+  ///@DtoUpdateOptional
   id              String  @id @default(auto()) @map("_id") @db.ObjectId
   diasNaFuncao    Int?
   planoDeCarreira Int?
@@ -73,11 +102,21 @@ model Cargo {
 
   comissao      Int?
   beneficios    String[]
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
   tarefas       Tarefa[]
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
   colaboradores Colaborador[]
 }
 
 model Colaborador {
+  ///@DtoCreateOptional
+  ///@DtoUpdateOptional
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   cpf  String?
@@ -113,10 +152,16 @@ model Colaborador {
   venc1Experiencia String?
   venc2Experiencia String?
   endereco         String?
-
-  cargo Cargo? @relation(fields: [cargoId], references: [id])
-
-  Loja    Loja?   @relation(fields: [lojaId], references: [id])
-  lojaId  String? @db.ObjectId
-  cargoId String? @db.ObjectId
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
+  cargo            Cargo?  @relation(fields: [cargoId], references: [id])
+  ///@DtoRelationCanCreateOnCreate
+  ///@DtoRelationCanConnectOnCreate
+  ///@DtoRelationCanCreateOnUpdate
+  ///@DtoRelationCanConnectOnUpdate
+  Loja             Loja?   @relation(fields: [lojaId], references: [id])
+  lojaId           String? @db.ObjectId
+  cargoId          String? @db.ObjectId
 }

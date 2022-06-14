@@ -1,6 +1,10 @@
-export class TurnoBase {
-  nome: string;
-  entrada: string;
-  saida: string;
+
+
+
+
+export class Turno {
+  id: string ;
+nome: string  | null;
+entrada: string  | null;
+saida: string  | null;
 }
-export class Turno extends TurnoBase {}
