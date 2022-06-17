@@ -1,1 +1,1 @@
-{"version":3,"file":"cargo.entity.js","sourceRoot":"","sources":["../../../src/cargo/entities/cargo.entity.ts"],"names":[],"mappings":";;;AAEA,MAAa,SAAS;IAAtB;QAyBE,eAAU,GAAG,IAAI,CAAC;QAMlB,eAAU,GAAa,EAAE,CAAC;IAC5B,CAAC;CAAA;AAhCD,8BAgCC;AAED,MAAa,KAAM,SAAQ,SAAS;IAApC;;QACE,YAAO,GAAa,EAAE,CAAC;IAGzB,CAAC;CAAA;AAJD,sBAIC"}
+{"version":3,"file":"cargo.entity.js","sourceRoot":"","sources":["../../../src/cargo/entities/cargo.entity.ts"],"names":[],"mappings":";;;AAKA,MAAa,KAAK;CA8BjB;AA9BD,sBA8BC"}

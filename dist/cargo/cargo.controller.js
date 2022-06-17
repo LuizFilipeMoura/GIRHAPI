@@ -15,14 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CargoController = void 0;
 const common_1 = require("@nestjs/common");
 const cargo_service_1 = require("./cargo.service");
-const create_cargo_dto_1 = require("./dto/create-cargo.dto");
-const update_cargo_dto_1 = require("./dto/update-cargo.dto");
+const cargo_entity_1 = require("./entities/cargo.entity");
 let CargoController = class CargoController {
     constructor(cargoService) {
         this.cargoService = cargoService;
     }
-    create(createCargoDto) {
-        return this.cargoService.create(createCargoDto);
+    create(cargo) {
+        return this.cargoService.create(cargo);
     }
     findAll() {
         return this.cargoService.findAll();
@@ -41,7 +40,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_cargo_dto_1.CreateCargoDto]),
+    __metadata("design:paramtypes", [cargo_entity_1.Cargo]),
     __metadata("design:returntype", void 0)
 ], CargoController.prototype, "create", null);
 __decorate([
@@ -62,7 +61,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_cargo_dto_1.UpdateCargoDto]),
+    __metadata("design:paramtypes", [String, cargo_entity_1.Cargo]),
     __metadata("design:returntype", void 0)
 ], CargoController.prototype, "update", null);
 __decorate([

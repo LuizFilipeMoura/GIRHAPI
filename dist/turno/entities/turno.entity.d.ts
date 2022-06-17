@@ -1,7 +1,6 @@
-export declare class TurnoBase {
-    nome: string;
-    entrada: string;
-    saida: string;
-}
-export declare class Turno extends TurnoBase {
+export declare class Turno {
+    id: string;
+    nome: string | null;
+    entrada: string | null;
+    saida: string | null;
 }

@@ -1,18 +1,11 @@
-export declare class TarefaBase {
-    descricao: string;
+import { Cargo } from '../../cargo/entities/cargo.entity';
+export declare class Tarefa {
+    id: string;
+    descricao: string | null;
     passos: string[];
-    grupo: any;
-    recorrencia: number;
-    prioridade: number;
+    grupo: string | null;
+    recorrencia: number | null;
+    prioridade: number | null;
+    Cargo?: Cargo | null;
+    cargoId: string | null;
 }
-export declare class Tarefa extends TarefaBase {
-}
-export declare enum TIPOS_RECORRENCIA {
-    DIARIO = 0,
-    SEMANAL = 1,
-    QUINZENAL = 2,
-    MENSAL = 3,
-    QUANDO_HOUVER = 4,
-    A_CADA_ATENDIMENTO = 5
-}
-export declare const tiposRecorrencia: string[];

@@ -1,5 +1,15 @@
-import { CreateTarefaDto } from './create-tarefa.dto';
-declare const UpdateTarefaDto_base: import("@nestjs/mapped-types").MappedType<Partial<CreateTarefaDto>>;
-export declare class UpdateTarefaDto extends UpdateTarefaDto_base {
+import { CreateCargoDto } from '../../cargo/dto/create-cargo.dto';
+import { ConnectCargoDto } from '../../cargo/dto/connect-cargo.dto';
+export declare class UpdateTarefaCargoRelationInputDto {
+    create?: CreateCargoDto;
+    connect?: ConnectCargoDto;
 }
-export {};
+export declare class UpdateTarefaDto {
+    id?: string;
+    descricao?: string;
+    passos?: string[];
+    grupo?: string;
+    recorrencia?: number;
+    prioridade?: number;
+    Cargo?: UpdateTarefaCargoRelationInputDto;
+}

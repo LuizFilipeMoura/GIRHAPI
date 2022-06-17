@@ -11,6 +11,7 @@ import { CargoService } from './cargo.service';
 import { CreateCargoDto } from './dto/create-cargo.dto';
 import { UpdateCargoDto } from './dto/update-cargo.dto';
 import { Cargo } from './entities/cargo.entity';
+import { UpdateTarefaDto } from '../tarefa/dto/update-tarefa.dto';
 
 @Controller('cargo')
 export class CargoController {
@@ -18,7 +19,7 @@ export class CargoController {
 
   @Post()
   create(@Body() cargo: Cargo) {
-    return this.cargoService.create(cargo as CreateCargoDto, cargo.tarefas);
+    return this.cargoService.create(cargo as CreateCargoDto);
   }
 
   @Get()
@@ -33,12 +34,7 @@ export class CargoController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCargoDto: Cargo) {
-    delete updateCargoDto.id;
-    return this.cargoService.update(
-      id,
-      updateCargoDto as UpdateCargoDto,
-      updateCargoDto.tarefas,
-    );
+    return this.cargoService.update(id, updateCargoDto as UpdateCargoDto);
   }
 
   @Delete(':id')

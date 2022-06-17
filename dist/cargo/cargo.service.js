@@ -10,21 +10,52 @@ exports.CargoService = void 0;
 const common_1 = require("@nestjs/common");
 const client_1 = require("@prisma/client");
 let CargoService = class CargoService extends client_1.PrismaClient {
-    create(createCargoDto) {
-        return this.cargo.create({ data: createCargoDto });
+    async create(createCargoDto) {
+        const tarefas = createCargoDto.tarefas;
+        delete createCargoDto.tarefas;
+        const cargo = await this.cargo.create({
+            data: Object.assign({}, createCargoDto),
+        });
+        if (tarefas) {
+            tarefas.map(async (tarefa) => {
+                tarefa['cargoId'] = cargo.id;
+                const id = tarefa.id;
+                delete tarefa.id;
+                await this.tarefa.update({
+                    where: { id },
+                    data: Object.assign({}, tarefa),
+                });
+            });
+        }
     }
     async findAll() {
-        return await this.cargo.findMany();
+        return await this.cargo.findMany({ include: { tarefas: true } });
     }
     async findOne(id) {
         return await this.cargo.findUnique({
             where: { id },
+            include: { tarefas: true },
         });
     }
     async update(id, updateCargoDto) {
+        const cargoId = updateCargoDto.id;
+        delete updateCargoDto.id;
+        const tarefas = updateCargoDto.tarefas;
+        delete updateCargoDto.tarefas;
+        if (tarefas) {
+            tarefas.map(async (tarefa) => {
+                tarefa['cargoId'] = cargoId;
+                const id = tarefa.id;
+                delete tarefa.id;
+                await this.tarefa.update({
+                    where: { id },
+                    data: Object.assign({}, tarefa),
+                });
+            });
+        }
         return await this.cargo.update({
             where: { id },
-            data: updateCargoDto,
+            data: Object.assign({}, updateCargoDto),
         });
     }
     async remove(id) {

@@ -1,5 +1,12 @@
-import { CreateLojaDto } from './create-loja.dto';
-declare const UpdateLojaDto_base: import("@nestjs/mapped-types").MappedType<Partial<CreateLojaDto>>;
-export declare class UpdateLojaDto extends UpdateLojaDto_base {
+import { CreateColaboradorDto } from '../../colaborador/dto/create-colaborador.dto';
+import { ConnectColaboradorDto } from '../../colaborador/dto/connect-colaborador.dto';
+export declare class UpdateLojaColaboradoresRelationInputDto {
+    create?: CreateColaboradorDto[];
+    connect?: ConnectColaboradorDto[];
 }
-export {};
+export declare class UpdateLojaDto {
+    id?: string;
+    nome?: string;
+    endereco?: string;
+    colaboradores?: UpdateLojaColaboradoresRelationInputDto;
+}

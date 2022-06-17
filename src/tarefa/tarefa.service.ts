@@ -20,6 +20,7 @@ export class TarefaService extends PrismaClient {
   }
 
   async update(id: string, updateTarefaDto: UpdateTarefaDto) {
+    delete updateTarefaDto.id;
     return await this.tarefa.update({
       where: { id },
       data: updateTarefaDto,

@@ -1,1 +1,1 @@
-{"version":3,"file":"loja.entity.js","sourceRoot":"","sources":["../../../src/loja/entities/loja.entity.ts"],"names":[],"mappings":";;;AAEA,MAAa,QAAQ;CAGpB;AAHD,4BAGC;AAED,MAAa,IAAK,SAAQ,QAAQ;IAAlC;;QAEE,kBAAa,GAAkB,EAAE,CAAC;IACpC,CAAC;CAAA;AAHD,oBAGC"}
+{"version":3,"file":"loja.entity.js","sourceRoot":"","sources":["../../../src/loja/entities/loja.entity.ts"],"names":[],"mappings":";;;AAIA,MAAa,IAAI;CAKhB;AALD,oBAKC"}

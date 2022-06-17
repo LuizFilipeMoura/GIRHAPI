@@ -1,35 +1,33 @@
 import { Tarefa } from '../../tarefa/entities/tarefa.entity';
-export declare class CargoBase {
-    diasNaFuncao: number;
-    planoDeCarreira: number;
-    nome: string;
-    salarioFixo: number;
-    descricaoSalario: string;
-    temComissaoSobreVendas: boolean;
-    temComissaoUnitaria: boolean;
-    temComissaoVendasLoja: boolean;
-    temMetasLoja: boolean;
-    temMetasIndividuais: boolean;
-    temAleloPremiacao: boolean;
-    temBradescoDental: boolean;
-    temSeguroDeVida: boolean;
-    temPlanoDeSaude: boolean;
-    temBonusDomingo: boolean;
-    temGratificacao: boolean;
-    temGarantiaMinima: boolean;
-    temQuebraDeCaixaHolerit: boolean;
-    temQuebraDeCaixaAlelo: boolean;
-    temPericulosidade: boolean;
-    descontinuado: boolean;
-    cargoAtivo: boolean;
-    valorAlelo: number;
-    valorGratificacao: number;
-    comissao: number;
+import { Colaborador } from '../../colaborador/entities/colaborador.entity';
+export declare class Cargo {
+    id: string;
+    diasNaFuncao: number | null;
+    planoDeCarreira: number | null;
+    nome: string | null;
+    salarioFixo: number | null;
+    descricaoSalario: string | null;
+    temComissaoSobreVendas: boolean | null;
+    temComissaoUnitaria: boolean | null;
+    temComissaoVendasLoja: boolean | null;
+    temMetasLoja: boolean | null;
+    temMetasIndividuais: boolean | null;
+    temAleloPremiacao: boolean | null;
+    temBradescoDental: boolean | null;
+    temSeguroDeVida: boolean | null;
+    temPlanoDeSaude: boolean | null;
+    temBonusDomingo: boolean | null;
+    temGratificacao: boolean | null;
+    temGarantiaMinima: boolean | null;
+    temQuebraDeCaixaHolerit: boolean | null;
+    temQuebraDeCaixaAlelo: boolean | null;
+    temPericulosidade: boolean | null;
+    descontinuado: boolean | null;
+    cargoAtivo: boolean | null;
+    valorAlelo: number | null;
+    valorGratificacao: number | null;
+    comissao: number | null;
     beneficios: string[];
-}
-export declare class Cargo extends CargoBase {
-    tarefas: Tarefa[];
-    setor: {
-        nome: string;
-    };
+    tarefas?: Tarefa[];
+    colaboradores?: Colaborador[];
 }

@@ -19,7 +19,13 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [loja_module_1.LojaModule, colaborador_module_1.ColaboradorModule, cargo_module_1.CargoModule, tarefa_module_1.TarefaModule, turno_module_1.TurnoModule],
+        imports: [
+            loja_module_1.LojaModule,
+            colaborador_module_1.ColaboradorModule,
+            cargo_module_1.CargoModule,
+            tarefa_module_1.TarefaModule,
+            turno_module_1.TurnoModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
